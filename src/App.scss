@@ -1,0 +1,35 @@
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  .start-container {
+    text-align: center;;
+  }
+  
+  button {
+    cursor: pointer;
+    width: 100px;
+    box-sizing: border-box;
+    height: 40px;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 10px;
+    border: 1px solid rgb(1, 85, 1);;
+  }
+  
+  button.disabled {
+    opacity: .4
+  }
+  
+  .start-btn {
+    width: 200px;
+  }
+  
+  .submit-btn {
+    color: white;
+    background-color: rgb(4, 156, 4);
+  }
+}

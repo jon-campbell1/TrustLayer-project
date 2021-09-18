@@ -1,24 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import './App.scss';
+import TriviaQuestions from './components/trivia-questions';
 
 function App() {
+
+  const [started, setStarted] = useState<boolean>(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        !started && 
+        <div className='start-container'>
+          <h2>Welcome! Click below to start Trivia.</h2>
+          <button 
+            onClick={() => { setStarted(true) }} 
+            className='submit-btn start-btn'>
+              Start Trivia!
+          </button>
+        </div>
+      }
+      {
+          started && <TriviaQuestions/>
+      }
     </div>
   );
 }
