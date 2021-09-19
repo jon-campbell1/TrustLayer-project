@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Leader } from '../../models';
 import { getFormattedDate } from '../../helpers';
+import './login-form.scss';
 
 const LoginForm = ({
     restart, 

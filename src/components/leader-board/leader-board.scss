@@ -1,0 +1,16 @@
+.leaderboard {
+    padding: 20px;
+    width: 100%;
+    .leaderboard-titles {
+        display: flex;
+        margin-bottom: 10px;
+
+        .title { 
+            width: 24%;
+            box-sizing: border-box;
+            padding: 5px;
+            font-weight: bold;
+            font-size: 10px;
+        }
+    }
+}

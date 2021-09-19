@@ -1,4 +1,5 @@
 import { Leader } from '../../models';
+import './leader-board.scss';
 
 const LeaderBoard = ({ restartAction }: {
     restartAction: (event: any) => void
