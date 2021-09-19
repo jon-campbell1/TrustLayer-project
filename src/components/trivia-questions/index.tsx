@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { decode } from 'html-entities';
-import { Leader, Question } from '../../models';
-import { getFormattedDate, randomIndex } from '../../helpers';
+import { Question } from '../../models';
+import { randomIndex } from '../../helpers';
 
 import LeaderBoard from '../leader-board';
 import LoginForm from '../login-form';
@@ -18,8 +18,6 @@ const TriviaQuestions = () => {
     const [currentQuestion, setCurrentQuestion] = useState<number>(0);
     const [totalScore, setTotalScore] = useState<number>(0);
 
-    const [username, setUsername] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
     const [selectedAnswer, setSelectedAnswer] = useState<string>('');
 
     const [questions, setQuestions] = useState<Question[]>([]);
@@ -141,20 +139,6 @@ const TriviaQuestions = () => {
             }
         </>
 
-    const saveUser = () => {
-        let leaderBoard = JSON.parse(localStorage.getItem('leaderBoard') || '[]');
-        leaderBoard.push({
-            username,
-            totalScore,
-            date: getFormattedDate()
-        });
-       leaderBoard = leaderBoard.sort((a: Leader, b: Leader) => (a.totalScore > b.totalScore) ? -1 : 1);
-       const topTen = leaderBoard.slice(0, 10);
-       localStorage.setItem('leaderBoard', JSON.stringify(topTen));
-       setViewingLeaderBoard(true);
-       setSavingScore(false);
-    }
-
     const finishedTrivia = loaded && currentQuestion === 10;
 
     return (
@@ -174,11 +158,9 @@ const TriviaQuestions = () => {
                 finishedTrivia && savingScore &&
                 <LoginForm 
                     restart={restart} 
-                    setUsername={setUsername} 
-                    setPassword={setPassword}
-                    username={username} 
-                    password={password} 
-                    saveUser={saveUser}
+                    setViewingLeaderBoard={setViewingLeaderBoard}
+                    setSavingScore={setSavingScore}
+                    totalScore={totalScore}
                 />
             }
             {
